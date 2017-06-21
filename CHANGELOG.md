@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.2.1 (2017-06-21)
+
+### Changes
+
+* Nextcloud template security fix. [Abner G Jacobsen]
+
+
 ## 0.2.0 (2017-06-21)
 
 ### Fix
