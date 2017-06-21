@@ -116,7 +116,7 @@ patch-release: guard-GITHUB_TOKEN check-status check-release
 	@git push --tags
 	@changelog=$$(git log $(COMPARISON) --oneline --no-merges) ; \
 	echo "**Changelog $(NEXT_PATCH)**<br/>$$changelog"; \
-	tools/github-release release -u admindaspanel -r engine-php71 -t $(NEXT_PATCH) -n $(NEXT_PATCH) -d "**Changelog**<br/>$$changelog"
+	tools/github-release release -u daspanel -r engine-php71 -t $(NEXT_PATCH) -n $(NEXT_PATCH) -d "**Changelog**<br/>$$changelog"
 
 minor-release: guard-GITHUB_TOKEN check-status check-release
 	echo "Minor release $(NEXT_MINOR)..."
@@ -131,7 +131,7 @@ minor-release: guard-GITHUB_TOKEN check-status check-release
 	echo $(COMPARISON)
 	@changelog=$$(git log $(COMPARISON) --oneline --no-merges) ; \
 	echo "**Changelog $(NEXT_MINOR)**<br/>$$changelog"; \
-	tools/github-release release -u admindaspanel -r engine-php71 -t $(NEXT_MINOR) -n $(NEXT_MINOR) -d "**Changelog**<br/>$$changelog"
+	tools/github-release release -u daspanel -r engine-php71 -t $(NEXT_MINOR) -n $(NEXT_MINOR) -d "**Changelog**<br/>$$changelog"
 
 major-release: guard-GITHUB_TOKEN check-status check-release
 	echo "Major release $(NEXT_MAJOR)..."
@@ -145,7 +145,7 @@ major-release: guard-GITHUB_TOKEN check-status check-release
 	@git push --tags
 	@changelog=$$(git log $(COMPARISON) --oneline --no-merges) ; \
 	echo "**Changelog $(NEXT_MAJOR)**<br/>$$changelog"; \
-	tools/github-release release -u admindaspanel -r engine-php71 -t $(NEXT_MAJOR) -n $(NEXT_MAJOR) -d "**Changelog**<br/>$$changelog"
+	tools/github-release release -u daspanel -r engine-php71 -t $(NEXT_MAJOR) -n $(NEXT_MAJOR) -d "**Changelog**<br/>$$changelog"
 
 
 showver:
