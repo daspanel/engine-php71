@@ -16,12 +16,12 @@ session.save_path={{getenv "PHP_SESSION_PATH" "/tmp"}}
 file_uploads=On
 
 opcache.enable=1
-opcache.enable_cli=0
+opcache.enable_cli=1
 opcache.save_comments=1
 opcache.interned_strings_buffer=8
 opcache.fast_shutdown=1
 opcache.validate_timestamps=2
-opcache.revalidate_freq=60
+opcache.revalidate_freq=10
 opcache.use_cwd=1
 opcache.max_accelerated_files=100000
 opcache.max_wasted_percentage=5
