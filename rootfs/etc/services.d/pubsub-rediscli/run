@@ -37,7 +37,6 @@ export ENGINE="php71"
 DASPANEL_REDIS_SERVER=`echo $SYSCFG | /opt/daspanel/bin/jq -r '.redis.server'`
 DASPANEL_REDIS_PORT=`echo $SYSCFG | /opt/daspanel/bin/jq -r '.redis.port'`
 DASPANEL_REDIS_DATABASE=`echo $SYSCFG | /opt/daspanel/bin/jq -r '.redis.database'`
-DASPANEL_REDIS_SERVER=`echo $SYSCFG | /opt/daspanel/bin/jq -r '.redis.server'`
 DASPANEL_REDIS_USER=`echo $SYSCFG | /opt/daspanel/bin/jq -r '.redis.user'`
 DASPANEL_REDIS_PASSWORD=`echo $SYSCFG | /opt/daspanel/bin/jq -r '.redis.password'`
 

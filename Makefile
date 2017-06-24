@@ -83,10 +83,10 @@ docker-clean-dangling:
 	docker images --no-trunc -q -f dangling=true | xargs -r docker rmi
 
 docker-clean-dev:
-	-@docker rmi daspanel/engine-php71-dev
+	-@docker rmi daspanel/engine-php71:dev
 
 docker-build-dev: clean docker-clean-dev rootfs-fixperms
-	docker build -f Dockerfile.dev -t daspanel/engine-php71-dev .
+	docker build -f Dockerfile.dev -t daspanel/engine-php71:dev .
 
 install-tools:
 	sudo pip install gitchangelog pystache
