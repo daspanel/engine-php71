@@ -1,6 +1,15 @@
 # Changelog
 
 
+## 0.4.0 (2017-06-24)
+
+### Other
+
+* PHP now use Redis to save session info. [Abner G Jacobsen]
+
+* Removed duplucated line. [Abner G Jacobsen]
+
+
 ## 0.3.0 (2017-06-23)
 
 ### Other
