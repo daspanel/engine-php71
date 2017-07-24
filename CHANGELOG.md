@@ -1,6 +1,17 @@
 # Changelog
 
 
+## 0.5.0 (2017-07-24)
+
+### Fix
+
+* Https://github.com/caddyserver/examples/issues/71. [Abner G Jacobsen]
+
+### Other
+
+* Https://github.com/caddyserver/examples/pull/76/files. [Abner G Jacobsen]
+
+
 ## 0.4.0 (2017-06-24)
 
 ### Other
