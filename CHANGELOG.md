@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.5.1 (2017-07-24)
+
+### Fix
+
+* Missing Caddy module. [Abner G Jacobsen]
+
+
 ## 0.5.0 (2017-07-24)
 
 ### Fix
