@@ -25,10 +25,15 @@
 		r ^/remote.php/(webdav|caldav|carddav|dav)(\/?)$
 		to /remote.php/{1}
 	}
-
 	rewrite {
 		r ^/remote.php/(webdav|caldav|carddav|dav)/(.+?)(\/?)$
 		to /remote.php/{1}/{2}
+	}
+
+    # allow public sharing by link    
+	rewrite {
+		r ^/public.php/(.+?)(\/?)$
+		to /public.php/(.+?)(\/?)$
 	}
 
 	# .htaccess / data / config / ... shouldn't be accessible from outside
