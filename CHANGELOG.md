@@ -1,6 +1,15 @@
 # Changelog
 
 
+## 0.6.0 (2017-09-29)
+
+### Other
+
+* Added Laravel and Codeigniter to PHP 7.1. [Abner G Jacobsen]
+
+* The Caddy server is, from now on, compiled from sources and is no longer downloaded as a binary - as required by Caddy's new licensing rules. Caddy was also upgraded to version v0.10.9. Also added nodejs, npm, yarn and webpack. [Abner G Jacobsen]
+
+
 ## 0.5.1 (2017-07-24)
 
 ### Fix
