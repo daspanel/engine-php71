@@ -1,6 +1,15 @@
 # Changelog
 
 
+## 0.7.0 (2017-10-19)
+
+### Other
+
+* Using oficial node 8.7 alpine as base image to easy add npm, yarn e others tools needed by modern dev enviroments. Installed ttyd for access to a shell in order to allow the use of git, curl, yarn npm and other interactive tools. [Abner G Jacobsen]
+
+* The Caddy server is, from now on, compiled from sources and is no longer downloaded as a binary - as required by Caddy's new licensing rules. Caddy was also upgraded to version v0.10.10. [Abner G Jacobsen]
+
+
 ## 0.6.0 (2017-09-29)
 
 ### Other
