@@ -1,7 +1,7 @@
-FROM golang:1.9-alpine as builder-caddy
+FROM golang:1.9-alpine3.6 as builder-caddy
 LABEL maintainer="ulrich.schreiner@gmail.com"
 
-ENV CADDY_VERSION v0.10.9
+ENV CADDY_VERSION v0.10.10
 
 # Inject files in container file system
 COPY caddy-build /caddy-build
@@ -12,9 +12,7 @@ RUN apk --no-cache update \
     && env OS=linux ARCH=amd64 ./build_caddy.sh \
     && ls -la /caddy-build/caddy
 
-
-FROM mhart/alpine-node:8.6.0
-#FROM alpine:3.6
+FROM node:8.7-alpine
 MAINTAINER Abner G Jacobsen - http://daspanel.com <admin@daspanel.com>
 
 # Thanks:
@@ -33,8 +31,6 @@ ARG DASPANEL_IMG_NAME=engine-php71
 ARG DASPANEL_OS_VERSION=alpine3.6
 
 # Parse Container specific arguments for the build command.
-ARG CADDY_PLUGINS="http.cors,http.expires,http.filemanager,http.ratelimit,http.realip"
-ARG CADDY_URL="https://caddyserver.com/download/linux/amd64?plugins=${CADDY_PLUGINS}"
 
 # PHP minimal modules to install - run's Worpress, Grav and others
 ARG PHP_MINIMAL="php7-fpm php7 php7-common php7-pear php7-phar php7-posix \
@@ -74,10 +70,8 @@ ARG PHP_MODULES_BANNED="php7-sysvsem php7-sysvshm php7-xmlrpc php7-shmop \
 ENV \
     # Stop container initialization if error occurs in cont-init.d, fix-attrs.d script's
     S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
-
     # Timezone
     TZ="UTC" \
-
     # DASPANEL defaults
     DASPANEL_WAIT_FOR_API="YES"
 
@@ -131,6 +125,9 @@ RUN set -x \
     && echo '@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
     && echo '@community http://nl.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
 
+    # Install webconsole software
+    && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/99_install_pkgs "ttyd" \
+
     # Install build environment packages
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/00_buildenv \
 
@@ -142,7 +139,10 @@ RUN set -x \
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/99_install_pkgs "${PHP_XDEBUG}" \
 
     # Install PHP Composer
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    #&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && curl -sS https://getcomposer.org/installer -o /tmp/composer-install \
+    && php /tmp/composer-install --install-dir=/usr/local/bin --filename=composer \
+    && rm /tmp/composer-install \
 
     # Install PHPUnit
     && curl -sSL https://phar.phpunit.de/phpunit-6.2.phar -o /usr/local/bin/phpunit \
@@ -159,12 +159,17 @@ RUN set -x \
     # Cleanup after phpizing
     #&& rm -rf /usr/include/php7 /usr/lib/php7/build \
 
-    # Install webpack globally
+    # Install webpack, gulp globally
     && npm install webpack -g \
+    && npm install gulp-cli -g \
+    && npm install bower -g \
 
     # Change www-data user and group to Daspanel default
     #&& usermod -u 1000 www-data \
     #&& groupmod -g 1000 www-data \
+
+    # Remove user coming from the node image wich id 1000 can conflict when daspanel user is created
+    && deluser node \
 
     # Remove build environment packages
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/09_cleanbuildenv \
