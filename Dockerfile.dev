@@ -12,7 +12,7 @@ RUN apk --no-cache update \
     && env OS=linux ARCH=amd64 ./build_caddy.sh \
     && ls -la /caddy-build/caddy
 
-FROM node:8.7-alpine
+FROM daspanel/engine-base-dev:dev
 MAINTAINER Abner G Jacobsen - http://daspanel.com <admin@daspanel.com>
 
 # Thanks:
@@ -139,7 +139,6 @@ RUN set -x \
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/99_install_pkgs "${PHP_XDEBUG}" \
 
     # Install PHP Composer
-    #&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && curl -sS https://getcomposer.org/installer -o /tmp/composer-install \
     && php /tmp/composer-install --install-dir=/usr/local/bin --filename=composer \
     && rm /tmp/composer-install \
@@ -158,18 +157,6 @@ RUN set -x \
 
     # Cleanup after phpizing
     #&& rm -rf /usr/include/php7 /usr/lib/php7/build \
-
-    # Install webpack, gulp globally
-    && npm install webpack -g \
-    && npm install gulp-cli -g \
-    && npm install bower -g \
-
-    # Change www-data user and group to Daspanel default
-    #&& usermod -u 1000 www-data \
-    #&& groupmod -g 1000 www-data \
-
-    # Remove user coming from the node image wich id 1000 can conflict when daspanel user is created
-    && deluser node \
 
     # Remove build environment packages
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/09_cleanbuildenv \
