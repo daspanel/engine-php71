@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.8.0 (2017-10-23)
+
+### Other
+
+* Using an intermediate image to add development packages that must be available at run time executation. [Abner G Jacobsen]
+
+
 ## 0.7.0 (2017-10-19)
 
 ### Other
