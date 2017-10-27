@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.9.0 (2017-10-27)
+
+### Other
+
+* Replaced ttyd by gotty to enable a better end user experience. [Abner G Jacobsen]
+
+
 ## 0.8.0 (2017-10-23)
 
 ### Other
