@@ -31,6 +31,7 @@ ARG DASPANEL_IMG_NAME=engine-php71
 ARG DASPANEL_OS_VERSION=alpine3.6
 
 # Parse Container specific arguments for the build command.
+ARG GOTTY_URL="https://github.com/yudai/gotty/releases/download/pre-release/gotty_2.0.0-alpha.2_linux_amd64.tar.gz"
 
 # PHP minimal modules to install - run's Worpress, Grav and others
 ARG PHP_MINIMAL="php7-fpm php7 php7-common php7-pear php7-phar php7-posix \
@@ -125,9 +126,6 @@ RUN set -x \
     && echo '@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories \
     && echo '@community http://nl.alpinelinux.org/alpine/edge/community' >> /etc/apk/repositories \
 
-    # Install webconsole software
-    && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/99_install_pkgs "ttyd" \
-
     # Install build environment packages
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/00_buildenv \
 
@@ -160,6 +158,15 @@ RUN set -x \
 
     # Remove build environment packages
     && sh /opt/daspanel/bootstrap/${DASPANEL_OS_VERSION}/${DASPANEL_IMG_NAME}/09_cleanbuildenv \
+
+    # Install gotty
+    && curl --silent --show-error --fail --location \
+        --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o /tmp/gotty.tar.gz \
+        "${GOTTY_URL}" \
+    && tar -C /usr/sbin -xvzf /tmp/gotty.tar.gz \
+    && chmod 0755 /usr/sbin/gotty \
+    && mkdir /lib64 \
+    && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
 
     # Install Caddy
     && chmod 0755 /usr/sbin/caddy \
