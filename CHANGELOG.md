@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.10.0 (2017-11-06)
+
+### Other
+
+* Added to the Caddy templates a proxy configuration under the _ds url to allow browser access to a nodejs server running on port 3000. The nodejs server has to be started using the web console. [Abner G Jacobsen]
+
+
 ## 0.9.0 (2017-10-27)
 
 ### Other
