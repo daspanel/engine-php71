@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.11.0 (2017-11-08)
+
+### Other
+
+* Chmod was messing site files with incorrect permissions. [Abner G Jacobsen]
+
+
 ## 0.10.0 (2017-11-06)
 
 ### Other
