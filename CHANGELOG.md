@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.12.0 (2017-11-09)
+
+### Other
+
+* Fix parameters received. The second must be the dir of the site. [Abner G Jacobsen]
+
+
 ## 0.11.0 (2017-11-08)
 
 ### Other
