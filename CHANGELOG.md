@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.12.1 (2017-11-10)
+
+### Other
+
+* Added missing Symfony template. [Abner G Jacobsen]
+
+
 ## 0.12.0 (2017-11-09)
 
 ### Other
