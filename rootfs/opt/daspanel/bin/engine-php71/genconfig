@@ -116,11 +116,6 @@ mkdir -p "${CACHE_PREFIX}"/php-fpm7/
 # Remove defaul PHP-FPM default configs
 rm -Rf /etc/php7/php-fpm.d/*
 
-# Get Browsecap
-echo "[DASPANEL-ENGINE-PHP71] Installing latest: https://browscap.org/stream?q=PHP_BrowsCapINI" >&2
-mkdir -p /etc/php7/extra
-wget -O /etc/php7/extra/browscap.ini "https://browscap.org/stream?q=PHP_BrowsCapINI"
-
 # Generate config
 run
 
