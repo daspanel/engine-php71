@@ -1,6 +1,17 @@
 # Changelog
 
 
+## 0.13.0 (2017-11-18)
+
+### Other
+
+* Removed the download of new Browscap every time the php-fpm configuration is generated. [Abner G Jacobsen]
+
+* Disabled the changing of file and directory permissions when site configuration is generated. [Abner G Jacobsen]
+
+* Generic sites use / as root dir. [Abner G Jacobsen]
+
+
 ## 0.12.1 (2017-11-10)
 
 ### Other
