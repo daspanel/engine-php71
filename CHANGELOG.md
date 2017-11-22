@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.14.0 (2017-11-22)
+
+### Other
+
+* Changed the way the root directory is configured. [Abner G Jacobsen]
+
+
 ## 0.13.0 (2017-11-18)
 
 ### Other
