@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.14.1 (2017-12-02)
+
+### Other
+
+* Improved support for temporary servers running on ports 3000 and 8080. Such as those that are started using the 'npm run dev' command on the web console. [Abner G Jacobsen]
+
+
 ## 0.14.0 (2017-11-22)
 
 ### Other
