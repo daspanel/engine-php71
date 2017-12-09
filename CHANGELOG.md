@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.14.2 (2017-12-09)
+
+### Other
+
+* The console service now uses its own user name and password. [Abner G Jacobsen]
+
+
 ## 0.14.1 (2017-12-02)
 
 ### Other
