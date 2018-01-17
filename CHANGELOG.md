@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.14.3 (2018-01-17)
+
+### Other
+
+* Updated Gotty version. [Abner G Jacobsen]
+
+
 ## 0.14.2 (2017-12-09)
 
 ### Other
