@@ -1,6 +1,13 @@
 # Changelog
 
 
+## 0.15.0 (2018-01-28)
+
+### Other
+
+* Added wp-cli as /usr/local/bin/wp. [Abner G Jacobsen]
+
+
 ## 0.14.3 (2018-01-17)
 
 ### Other
